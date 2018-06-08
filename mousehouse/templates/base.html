@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>{% block head_title %}Welcome to my blog{% endblock %}</title>
+    </head>
+    <body>
+        <aside>
+        {% if user.is_authenticated %}            
+            <li>User: {{ user.get_username }}</li>
+            <li><a href="/logout">Logout</a></li>
+          {% else %}
+            <li><a href="/login">Login</a></li>   
+            <li><a href="/register">Sign Up</li></p>
+          {% endif %} 
+        </aside>
+        <section>
+        {% block content %}
+
+        {% endblock %}
+        </section>
+    </body>
+</html>

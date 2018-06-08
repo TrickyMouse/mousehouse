@@ -1,0 +1,11 @@
+{% extends 'base.html' %} 
+
+{% block head_title %}{{ post.title | safe }}{% endblock %}
+{% block title %}{{ post.title | safe }}{% endblock %}
+
+{% block content %}
+    {% if post.image_link %}
+    <img src="{{ post.image_link }}" width="300"/>
+    {% endif %}
+    {{ post.body | safe }}
+{% endblock %}

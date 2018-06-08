@@ -1,0 +1,4 @@
+Django==1.11.13
+django-tinymce==2.7.0
+netifaces==0.10.7
+pytz==2018.4
