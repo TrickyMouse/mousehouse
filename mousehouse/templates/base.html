@@ -4,7 +4,8 @@
     </head>
     <body>
         <aside>
-        {% if user.is_authenticated %}            
+        {% if user.is_authenticated %}
+            <li><a href="/">Home</a></li>
             <li>User: {{ user.get_username }}</li>
             <li><a href="/logout">Logout</a></li>
           {% else %}

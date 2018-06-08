@@ -1,7 +1,7 @@
 {% extends 'base.html' %} 
 {% block content %}
 
-{% if user.is_authenticated %}
+{% if user.is_authenticated %}        
         <h2>Categories</h2>
         {% if categories %}
             <ul>
@@ -17,7 +17,9 @@
         {% if posts %}
             <ul>
             {% for post in posts %}
-                <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+                {% if post_types|return_item:post.permission_type in permissions %}
+                    <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+                {% endif %}
             {% endfor %}
             </ul>
         {% else %}

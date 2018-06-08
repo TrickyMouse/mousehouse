@@ -1,5 +1,14 @@
 {% extends 'base.html' %} 
-
+        <aside>
+        {% if user.is_authenticated %}
+            <li><a href="/">Home</a></li>
+            <li>User: {{ user.get_username }}</li>
+            <li><a href="/logout">Logout</a></li>
+          {% else %}
+            <li><a href="/login">Login</a></li>   
+            <li><a href="/register">Sign Up</li></p>
+          {% endif %} 
+        </aside>
 {% block head_title %}{{ post.title | safe }}{% endblock %}
 {% block title %}{{ post.title | safe }}{% endblock %}
 

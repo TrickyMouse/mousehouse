@@ -14,10 +14,25 @@ from django.template.defaulttags import register
 def get_item(dictionary, key):
     return dictionary.get(key)
 
+@register.filter
+def return_item(l, i):
+    try:
+        return l[i]
+    except:
+        return None
+
 def index(request):
+    post_types = {
+        1: 'mousehouse.view_pg',
+        2: 'mousehouse.view_adult',
+        3: 'mousehouse.view_adult_plus',
+        4: 'mousehouse.view_standard'
+    }
     return render(request, 'index.html', {
         'categories': Category.objects.all(),
-        'posts': Blog.objects.all()[:5]
+        'posts': Blog.objects.all()[:5],
+        'permissions': list(request.user.get_group_permissions()),
+        'post_types': post_types
     })
 
 @login_required
